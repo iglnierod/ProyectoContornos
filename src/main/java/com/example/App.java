@@ -73,7 +73,6 @@ public class App {
                 }
             }
     
-            // Si ya existe un usuario con ese email, mostrar un mensaje de error
             if (emailExiste) {
                 System.out.println("\nYa existe un usuario con ese email.");
                 return;
