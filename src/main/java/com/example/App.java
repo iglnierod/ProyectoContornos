@@ -107,7 +107,7 @@ public class App {
         if (!usuarioEncontrado) {
             System.out.println("\nEmail o contrasinal incorrectos.");
         }
-        scanner.close();
+        
     }
     
     public void borrarUsuario(Scanner scanner) {
