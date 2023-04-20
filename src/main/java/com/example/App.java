@@ -36,9 +36,9 @@ public class App {
                 case 2:
                     app.comprobarDatos();
                     break;
-                case 3:
-                    app.;
-                    break;
+                // case 3:
+                // app.;
+                // break;
                 case 4:
                     System.out.println("Saíndo do programa...");
                     break;
@@ -56,6 +56,19 @@ public class App {
         try {
             System.out.print("\nEmail: ");
             String email = scanner.next();
+
+            boolean emailExiste = false;
+            for (Usuario usuario : usuarios) {
+                if (usuario.getEmail().equals(email)) {
+                    emailExiste = true;
+                    break;
+                }
+            }
+
+            if (emailExiste) {
+                System.out.println("\nYa existe un usuario con ese email.");
+                return;
+            }
 
             System.out.print("Contrasinal: ");
             String contrasinal = scanner.next();
@@ -77,20 +90,20 @@ public class App {
 
     public void comprobarDatos() {
         Scanner scanner = new Scanner(System.in);
-    
+
         System.out.print("\nEmail: ");
         String email = scanner.next();
-    
+
         System.out.print("Contrasinal: ");
         String contrasinal = scanner.next();
-    
+
         boolean usuarioEncontrado = false;
         for (Usuario usuario : usuarios) {
             if (usuario.getEmail().equals(email) || usuario.getContrasinal().equals(contrasinal)) {
                 usuarioEncontrado = true;
                 System.out.println("\nDatos del usuario:");
                 System.out.println("Email: " + usuario.getEmail());
-                System.out.println("Email: " + usuario.getContrasinal());
+                System.out.println("Contrasinal: " + usuario.getContrasinal());
                 System.out.println("Web: " + usuario.getWeb());
                 System.out.println("Data de nacemento: " + usuario.getNacemento());
                 break;
@@ -100,9 +113,8 @@ public class App {
             System.out.println("\nEmail o contrasinal incorrectos.");
         }
     }
-    
-    public void borrarUsuario(){
-        
+
+    public void borrarUsuario() {
+
     }
 }
-
