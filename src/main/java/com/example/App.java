@@ -41,15 +41,9 @@ public class App {
                 case 2:
                     app.comprobarDatos();
                     break;
-<<<<<<< HEAD
                 case 3:
                     app.borrarUsuario(scanner);
                     break;
-=======
-                // case 3:
-                // app.;
-                // break;
->>>>>>> 5544da4de75285893dbc6607a91dc73af681e9d6
                 case 4:
                     app.buscarUsuarios(scanner);
                     break;
