@@ -65,6 +65,19 @@ public class App {
             System.out.print("\nEmail: ");
             String email = scanner.next();
 
+            boolean emailExiste = false;
+            for (Usuario usuario : usuarios) {
+                if (usuario.getEmail().equals(email)) {
+                    emailExiste = true;
+                    break;
+                }
+            }
+
+            if (emailExiste) {
+                System.out.println("\nYa existe un usuario con ese email.");
+                return;
+            }
+
             System.out.print("Contrasinal: ");
             String contrasinal = scanner.next();
 
@@ -85,20 +98,20 @@ public class App {
 
     public void comprobarDatos() {
         Scanner scanner = new Scanner(System.in);
-    
+
         System.out.print("\nEmail: ");
         String email = scanner.next();
-    
+
         System.out.print("Contrasinal: ");
         String contrasinal = scanner.next();
-    
+
         boolean usuarioEncontrado = false;
         for (Usuario usuario : usuarios) {
             if (usuario.getEmail().equals(email) || usuario.getContrasinal().equals(contrasinal)) {
                 usuarioEncontrado = true;
                 System.out.println("\nDatos del usuario:");
                 System.out.println("Email: " + usuario.getEmail());
-                System.out.println("Email: " + usuario.getContrasinal());
+                System.out.println("Contrasinal: " + usuario.getContrasinal());
                 System.out.println("Web: " + usuario.getWeb());
                 System.out.println("Data de nacemento: " + usuario.getNacemento());
                 break;
@@ -110,61 +123,8 @@ public class App {
         scanner.close();
     }
     
-    public void borrarUsuario(Scanner scanner) {
-        System.out.print("\nEmail: ");
-        String email = scanner.next();
-    
-        System.out.print("Contrasinal: ");
-        String contrasinal = scanner.next();
-    
-        boolean usuarioEncontrado = false;
-        for (Usuario usuario : usuarios) {
-            if (usuario.getEmail().equals(email) || usuario.getContrasinal().equals(contrasinal)) {
-                usuarios.remove(usuario);
-                usuarioEncontrado = true;
-                System.out.println("Usuario borrado con éxito.");
-                break;
-            }
-        }
-        if (!usuarioEncontrado) {
-            System.out.println("No se encontró el usuario con el email y contraseña proporcionados.");
-        }
+    public void borrarUsuario(){
+        
     }
-    
-    public void buscarUsuarios(Scanner scanner) {
-        System.out.print("Introduce a primeira data (yyyy-MM-dd): ");
-        String dataInicioStr = scanner.next();
-    
-        System.out.print("Introduce a segunda data (yyyy-MM-dd): ");
-        String dataFinStr = scanner.next();
-    
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    
-        try {
-            LocalDate dataInicio = LocalDate.parse(dataInicioStr, formatter);
-            LocalDate dataFin = LocalDate.parse(dataFinStr, formatter);
-    
-            boolean usuariosEncontrados = false;
-            for (Usuario usuario : usuarios) {
-                String fechaNacimientoStr = dateFormatter.format(usuario.getNacemento().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-    
-                LocalDate dataNacemento = LocalDate.parse(fechaNacimientoStr, formatter);
-                if (dataNacemento.isAfter(dataInicio) || dataNacemento.isBefore(dataFin)) {
-                    System.out.println("Email: " + usuario.getEmail());
-                    System.out.println("Data de nacemento: " + fechaNacimientoStr);
-                    usuariosEncontrados = true;
-                }
-            }
-    
-            if (!usuariosEncontrados) {
-                System.out.println("Non hai usuarios con data de nacemento entre " + dataInicioStr + " e " + dataFinStr);
-            }
-        } catch (DateTimeParseException e) {
-            System.out.println("Formato de data incorrecto. O formato debe ser yyyy-MM-dd");
-        }
-    }
-    
 }
 
