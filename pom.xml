@@ -37,6 +37,12 @@
       <version>5.4.2</version>
       <scope>test</scope>
   </dependency>
+  
+    <dependency>
+      <groupId>org.mongodb</groupId>
+      <artifactId>mongo-java-driver</artifactId>
+      <version>3.11.0</version>
+    </dependency>
   </dependencies>
 
   <build>
