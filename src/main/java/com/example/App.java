@@ -41,9 +41,15 @@ public class App {
                 case 2:
                     app.comprobarDatos();
                     break;
+<<<<<<< HEAD
                 case 3:
                     app.borrarUsuario(scanner);
                     break;
+=======
+                // case 3:
+                // app.;
+                // break;
+>>>>>>> 5544da4de75285893dbc6607a91dc73af681e9d6
                 case 4:
                     app.buscarUsuarios(scanner);
                     break;
@@ -123,8 +129,60 @@ public class App {
         scanner.close();
     }
     
-    public void borrarUsuario(){
-        
+    public void borrarUsuario(Scanner scanner) {
+        System.out.print("\nEmail: ");
+        String email = scanner.next();
+    
+        System.out.print("Contrasinal: ");
+        String contrasinal = scanner.next();
+    
+        boolean usuarioEncontrado = false;
+        for (Usuario usuario : usuarios) {
+            if (usuario.getEmail().equals(email) || usuario.getContrasinal().equals(contrasinal)) {
+                usuarios.remove(usuario);
+                usuarioEncontrado = true;
+                System.out.println("Usuario borrado con éxito.");
+                break;
+            }
+        }
+        if (!usuarioEncontrado) {
+            System.out.println("No se encontró el usuario con el email y contraseña proporcionados.");
+        }
     }
+    
+    public void buscarUsuarios(Scanner scanner) {
+        System.out.print("Introduce a primeira data (yyyy-MM-dd): ");
+        String dataInicioStr = scanner.next();
+    
+        System.out.print("Introduce a segunda data (yyyy-MM-dd): ");
+        String dataFinStr = scanner.next();
+    
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    
+        try {
+            LocalDate dataInicio = LocalDate.parse(dataInicioStr, formatter);
+            LocalDate dataFin = LocalDate.parse(dataFinStr, formatter);
+    
+            boolean usuariosEncontrados = false;
+            for (Usuario usuario : usuarios) {
+                String fechaNacimientoStr = dateFormatter.format(usuario.getNacemento().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+    
+                LocalDate dataNacemento = LocalDate.parse(fechaNacimientoStr, formatter);
+                if (dataNacemento.isAfter(dataInicio) || dataNacemento.isBefore(dataFin)) {
+                    System.out.println("Email: " + usuario.getEmail());
+                    System.out.println("Data de nacemento: " + fechaNacimientoStr);
+                    usuariosEncontrados = true;
+                }
+            }
+    
+            if (!usuariosEncontrados) {
+                System.out.println("Non hai usuarios con data de nacemento entre " + dataInicioStr + " e " + dataFinStr);
+            }
+        } catch (DateTimeParseException e) {
+            System.out.println("Formato de data incorrecto. O formato debe ser yyyy-MM-dd");
+        }
+    }
+    
 }
-
