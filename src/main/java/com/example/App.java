@@ -89,6 +89,20 @@ public class App {
         System.out.print("\nEmail: ");
         String email = scanner.next();
     
+        boolean emailExiste = false;
+        for (Usuario usuario : usuarios) {
+            if (usuario.getEmail().equals(email)) {
+                emailExiste = true;
+                break;
+            }
+        }
+
+        // Si ya existe un usuario con ese email, mostrar un mensaje de error
+        if (emailExiste) {
+            System.out.println("\nYa existe un usuario con ese email.");
+            return;
+        }
+
         System.out.print("Contrasinal: ");
         String contrasinal = scanner.next();
     
