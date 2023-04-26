@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Validador.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">proyectocontornos</a> &gt; <a href="index.source.html" class="el_package">com.example</a> &gt; <span class="el_source">Validador.java</span></div><h1>Validador.java</h1><pre class="source lang-java linenums">package com.example;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.time.LocalDate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+<span class="nc" id="L9">public class Validador {</span>
+    public static boolean validarEmail(String email) {
+<span class="fc" id="L11">        String regex = &quot;^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$&quot;;</span>
+<span class="fc" id="L12">        Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);</span>
+<span class="fc" id="L13">        Matcher matcher = pattern.matcher(email);</span>
+<span class="fc" id="L14">        return matcher.matches();</span>
+    }
+
+    public static boolean validarContrasinal(String contrasinal) {
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        if (contrasinal.length() &lt; 8) {</span>
+<span class="fc" id="L19">            return false;</span>
+        }
+
+<span class="fc" id="L22">        String regex = &quot;^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@#$%^&amp;+=!])(?=\\S+$).{8,}$&quot;;</span>
+<span class="fc" id="L23">        Pattern pattern = Pattern.compile(regex);</span>
+<span class="fc" id="L24">        Matcher matcher = pattern.matcher(contrasinal);</span>
+<span class="fc" id="L25">        return matcher.matches();</span>
+    }
+
+    public static String hashearContrasinal(String contrasinal) {
+        try {
+<span class="fc" id="L30">            MessageDigest md = MessageDigest.getInstance(&quot;SHA-256&quot;);</span>
+<span class="fc" id="L31">            md.update(contrasinal.getBytes());</span>
+<span class="fc" id="L32">            byte[] digest = md.digest();</span>
+<span class="fc" id="L33">            StringBuilder sb = new StringBuilder();</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">            for (byte b : digest) {</span>
+<span class="fc" id="L35">                sb.append(String.format(&quot;%02x&quot;, b &amp; 0xff));</span>
+            }
+<span class="fc" id="L37">            return sb.toString();</span>
+<span class="nc" id="L38">        } catch (NoSuchAlgorithmException e) {</span>
+<span class="nc" id="L39">            return null;</span>
+        }
+    }
+
+    public static boolean validarWeb(String web) {
+<span class="fc" id="L44">        String regex = &quot;^(http(s)?://)?([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&amp;=]*)?$&quot;;</span>
+<span class="fc" id="L45">        Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);</span>
+<span class="fc" id="L46">        Matcher matcher = pattern.matcher(web);</span>
+<span class="fc" id="L47">        return matcher.matches();</span>
+    }
+
+    public static boolean validarNacemento(LocalDate nacemento) {
+<span class="fc" id="L51">        return nacemento.isBefore(LocalDate.now());</span>
+    }
+
+    public static String hashearContrasinal(String contrasinal, String string) {
+<span class="fc" id="L55">        return null;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
