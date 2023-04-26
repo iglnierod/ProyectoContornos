@@ -20,6 +20,9 @@ public class Usuario {
         setNacemento(nacemento);
     }
 
+    public Usuario() {
+    }
+
     public String getEmail() {
         return email;
     }

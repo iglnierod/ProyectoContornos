@@ -1,4 +1,4 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 proyectocontornos,com.example,App,391,0,38,0,102,0,27,0,6,0
-proyectocontornos,com.example,Usuario,166,0,16,0,42,0,18,0,10,0
+proyectocontornos,com.example,Usuario,0,169,0,16,0,44,0,19,0,11
 proyectocontornos,com.example,Validador,6,97,0,4,3,23,1,8,1,6
