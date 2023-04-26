@@ -50,4 +50,8 @@ public class Validador {
     public static boolean validarNacemento(LocalDate nacemento) {
         return nacemento.isBefore(LocalDate.now());
     }
+
+    public static String hashearContrasinal(String contrasinal, String string) {
+        return null;
+    }
 }
