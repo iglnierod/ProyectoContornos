@@ -11,26 +11,26 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class App {
-    private List&lt;Usuario&gt; usuarios;
+    public List&lt;Usuario&gt; usuarios;
 
-<span class="nc" id="L16">    public App() {</span>
-<span class="nc" id="L17">        this.usuarios = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L18">    }</span>
+<span class="fc" id="L16">    public App() {</span>
+<span class="fc" id="L17">        this.usuarios = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L18">    }</span>
 
     public static void main(String[] args) {
-<span class="nc" id="L21">        App app = new App();</span>
+<span class="fc" id="L21">        App app = new App();</span>
 
-<span class="nc" id="L23">        Scanner scanner = new Scanner(System.in);</span>
+<span class="fc" id="L23">        Scanner scanner = new Scanner(System.in);</span>
         int opcion;
 
         do {
-<span class="nc" id="L27">            System.out.println(&quot;\n********** Menú **********&quot;);</span>
-<span class="nc" id="L28">            System.out.println(&quot;1. Rexistrar usuario&quot;);</span>
-<span class="nc" id="L29">            System.out.println(&quot;2. Datos de usuario&quot;);</span>
-<span class="nc" id="L30">            System.out.println(&quot;3. Borrar usuario&quot;);</span>
-<span class="nc" id="L31">            System.out.println(&quot;4. Buscar usuario&quot;);</span>
-<span class="nc" id="L32">            System.out.println(&quot;5. Saír&quot;);</span>
-<span class="nc" id="L33">            System.out.print(&quot;Escolle unha opción: &quot;);</span>
+<span class="fc" id="L27">            System.out.println(&quot;\n********** Menú **********&quot;);</span>
+<span class="fc" id="L28">            System.out.println(&quot;1. Rexistrar usuario&quot;);</span>
+<span class="fc" id="L29">            System.out.println(&quot;2. Datos de usuario&quot;);</span>
+<span class="fc" id="L30">            System.out.println(&quot;3. Borrar usuario&quot;);</span>
+<span class="fc" id="L31">            System.out.println(&quot;4. Buscar usuario&quot;);</span>
+<span class="fc" id="L32">            System.out.println(&quot;5. Saír&quot;);</span>
+<span class="fc" id="L33">            System.out.print(&quot;Escolle unha opción: &quot;);</span>
 
 <span class="nc" id="L35">            opcion = scanner.nextInt();</span>
 
@@ -62,123 +62,122 @@ public class App {
 
     public void rexistrarUsuario(Scanner scanner) {
         try {
-<span class="nc" id="L65">            System.out.print(&quot;\nEmail: &quot;);</span>
-<span class="nc" id="L66">            String email = scanner.next();</span>
+<span class="fc" id="L65">            System.out.print(&quot;\nEmail: &quot;);</span>
+<span class="fc" id="L66">            String email = scanner.next();</span>
 
-<span class="nc" id="L68">            boolean emailExiste = false;</span>
-<span class="nc bnc" id="L69" title="All 2 branches missed.">            for (Usuario usuario : usuarios) {</span>
-<span class="nc bnc" id="L70" title="All 2 branches missed.">                if (usuario.getEmail().equals(email)) {</span>
-<span class="nc" id="L71">                    emailExiste = true;</span>
-<span class="nc" id="L72">                    break;</span>
+<span class="fc" id="L68">            boolean emailExiste = false;</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">            for (Usuario usuario : usuarios) {</span>
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">                if (usuario.getEmail().equals(email)) {</span>
+<span class="fc" id="L71">                    emailExiste = true;</span>
+<span class="fc" id="L72">                    break;</span>
                 }
             }
     
-<span class="nc bnc" id="L76" title="All 2 branches missed.">            if (emailExiste) {</span>
-<span class="nc" id="L77">                System.out.println(&quot;\nYa existe un usuario con ese email.&quot;);</span>
-<span class="nc" id="L78">                return;</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">            if (emailExiste) {</span>
+<span class="fc" id="L77">                System.out.println(&quot;\nYa existe un usuario con ese email.&quot;);</span>
+<span class="fc" id="L78">                return;</span>
             }
 
-<span class="nc" id="L81">            System.out.print(&quot;Contrasinal: &quot;);</span>
-<span class="nc" id="L82">            String contrasinal = scanner.next();</span>
+<span class="fc" id="L81">            System.out.print(&quot;Contrasinal: &quot;);</span>
+<span class="fc" id="L82">            String contrasinal = scanner.next();</span>
 
-<span class="nc" id="L84">            System.out.print(&quot;Web: &quot;);</span>
-<span class="nc" id="L85">            String web = scanner.next();</span>
+<span class="fc" id="L84">            System.out.print(&quot;Web: &quot;);</span>
+<span class="fc" id="L85">            String web = scanner.next();</span>
 
-<span class="nc" id="L87">            System.out.print(&quot;Data de nacemento (yyyy-MM-dd): &quot;);</span>
-<span class="nc" id="L88">            String nacemento = scanner.next();</span>
+<span class="fc" id="L87">            System.out.print(&quot;Data de nacemento (yyyy-MM-dd): &quot;);</span>
+<span class="fc" id="L88">            String nacemento = scanner.next();</span>
 
-<span class="nc" id="L90">            Usuario usuario = new Usuario(email, contrasinal, web, nacemento);</span>
-<span class="nc" id="L91">            usuarios.add(usuario);</span>
+<span class="fc" id="L90">            Usuario usuario = new Usuario(email, contrasinal, web, nacemento);</span>
+<span class="fc" id="L91">            usuarios.add(usuario);</span>
 
-<span class="nc" id="L93">            System.out.println(&quot;\nUsuario rexistrado con éxito.&quot;);</span>
-<span class="nc" id="L94">        } catch (IllegalArgumentException | NoSuchAlgorithmException | ParseException e) {</span>
-<span class="nc" id="L95">            System.out.println(&quot;\nErro: &quot; + e.getMessage());</span>
+<span class="fc" id="L93">            System.out.println(&quot;\nUsuario rexistrado con éxito.&quot;);</span>
+<span class="fc" id="L94">        } catch (IllegalArgumentException | NoSuchAlgorithmException | ParseException e) {</span>
+<span class="fc" id="L95">            System.out.println(&quot;\nErro: &quot; + e.getMessage());</span>
         }
-<span class="nc" id="L97">    }</span>
+<span class="fc" id="L97">    }</span>
 
     public void comprobarDatos() {
-<span class="nc" id="L100">        Scanner scanner = new Scanner(System.in);</span>
+<span class="fc" id="L100">        Scanner scanner = new Scanner(System.in);</span>
     
-<span class="nc" id="L102">        System.out.print(&quot;\nEmail: &quot;);</span>
-<span class="nc" id="L103">        String email = scanner.next();</span>
+<span class="fc" id="L102">        System.out.print(&quot;\nEmail: &quot;);</span>
+<span class="fc" id="L103">        String email = scanner.next();</span>
     
-<span class="nc" id="L105">        System.out.print(&quot;Contrasinal: &quot;);</span>
-<span class="nc" id="L106">        String contrasinal = scanner.next();</span>
+<span class="fc" id="L105">        System.out.print(&quot;Contrasinal: &quot;);</span>
+<span class="fc" id="L106">        String contrasinal = scanner.next();</span>
     
-<span class="nc" id="L108">        boolean usuarioEncontrado = false;</span>
-<span class="nc bnc" id="L109" title="All 2 branches missed.">        for (Usuario usuario : usuarios) {</span>
-<span class="nc bnc" id="L110" title="All 4 branches missed.">            if (usuario.getEmail().equals(email) || usuario.getContrasinal().equals(contrasinal)) {</span>
-<span class="nc" id="L111">                usuarioEncontrado = true;</span>
-<span class="nc" id="L112">                System.out.println(&quot;\nDatos del usuario:&quot;);</span>
-<span class="nc" id="L113">                System.out.println(&quot;Email: &quot; + usuario.getEmail());</span>
-<span class="nc" id="L114">                System.out.println(&quot;Web: &quot; + usuario.getWeb());</span>
-<span class="nc" id="L115">                System.out.println(&quot;Data de nacemento: &quot; + usuario.getNacemento());</span>
-<span class="nc" id="L116">                break;</span>
+<span class="fc" id="L108">        boolean usuarioEncontrado = false;</span>
+<span class="fc bfc" id="L109" title="All 2 branches covered.">        for (Usuario usuario : usuarios) {</span>
+<span class="pc bpc" id="L110" title="1 of 4 branches missed.">            if (usuario.getEmail().equals(email) || usuario.getContrasinal().equals(contrasinal)) {</span>
+<span class="fc" id="L111">                usuarioEncontrado = true;</span>
+<span class="fc" id="L112">                System.out.println(&quot;\nDatos del usuario:&quot;);</span>
+<span class="fc" id="L113">                System.out.println(&quot;Email: &quot; + usuario.getEmail());</span>
+<span class="fc" id="L114">                System.out.println(&quot;Web: &quot; + usuario.getWeb());</span>
+<span class="fc" id="L115">                System.out.println(&quot;Data de nacemento: &quot; + usuario.getNacemento());</span>
+<span class="fc" id="L116">                break;</span>
             }
         }
         
-<span class="nc bnc" id="L120" title="All 2 branches missed.">        if (!usuarioEncontrado) {</span>
-<span class="nc" id="L121">            System.out.println(&quot;\nEmail o contrasinal incorrectos.&quot;);</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">        if (!usuarioEncontrado) {</span>
+<span class="fc" id="L121">            System.out.println(&quot;\nEmail o contrasinal incorrectos.&quot;);</span>
         }
         
-<span class="nc" id="L124">    }</span>
+<span class="fc" id="L124">    }</span>
     
     public void borrarUsuario(Scanner scanner) {
-<span class="nc" id="L127">        System.out.print(&quot;\nEmail: &quot;);</span>
-<span class="nc" id="L128">        String email = scanner.next();</span>
+<span class="fc" id="L127">        System.out.print(&quot;\nEmail: &quot;);</span>
+<span class="fc" id="L128">        String email = scanner.next();</span>
     
-<span class="nc" id="L130">        System.out.print(&quot;Contrasinal: &quot;);</span>
-<span class="nc" id="L131">        String contrasinal = scanner.next();</span>
+<span class="fc" id="L130">        System.out.print(&quot;Contrasinal: &quot;);</span>
+<span class="fc" id="L131">        String contrasinal = scanner.next();</span>
     
-<span class="nc" id="L133">        boolean usuarioEncontrado = false;</span>
-<span class="nc bnc" id="L134" title="All 2 branches missed.">        for (Usuario usuario : usuarios) {</span>
-<span class="nc bnc" id="L135" title="All 4 branches missed.">            if (usuario.getEmail().equals(email) || usuario.getContrasinal().equals(contrasinal)) {</span>
-<span class="nc" id="L136">                usuarios.remove(usuario);</span>
-<span class="nc" id="L137">                usuarioEncontrado = true;</span>
-<span class="nc" id="L138">                System.out.println(&quot;Usuario borrado con éxito.&quot;);</span>
-<span class="nc" id="L139">                break;</span>
+<span class="fc" id="L133">        boolean usuarioEncontrado = false;</span>
+<span class="pc bpc" id="L134" title="1 of 2 branches missed.">        for (Usuario usuario : usuarios) {</span>
+<span class="pc bpc" id="L135" title="3 of 4 branches missed.">            if (usuario.getEmail().equals(email) || usuario.getContrasinal().equals(contrasinal)) {</span>
+<span class="fc" id="L136">                usuarios.remove(usuario);</span>
+<span class="fc" id="L137">                usuarioEncontrado = true;</span>
+<span class="fc" id="L138">                System.out.println(&quot;Usuario borrado con éxito.&quot;);</span>
+<span class="fc" id="L139">                break;</span>
             }
         }
-<span class="nc bnc" id="L142" title="All 2 branches missed.">        if (!usuarioEncontrado) {</span>
+<span class="pc bpc" id="L142" title="1 of 2 branches missed.">        if (!usuarioEncontrado) {</span>
 <span class="nc" id="L143">            System.out.println(&quot;No se encontró el usuario con el email y contraseña proporcionados.&quot;);</span>
         }
-<span class="nc" id="L145">    }</span>
+<span class="fc" id="L145">    }</span>
     
     public void buscarUsuarios(Scanner scanner) {
-<span class="nc" id="L148">        System.out.print(&quot;Introduce a primeira data (yyyy-MM-dd): &quot;);</span>
-<span class="nc" id="L149">        String dataInicioStr = scanner.next();</span>
+<span class="fc" id="L148">        System.out.print(&quot;Introduce a primeira data (yyyy-MM-dd): &quot;);</span>
+<span class="fc" id="L149">        String dataInicioStr = scanner.next();</span>
     
-<span class="nc" id="L151">        System.out.print(&quot;Introduce a segunda data (yyyy-MM-dd): &quot;);</span>
-<span class="nc" id="L152">        String dataFinStr = scanner.next();</span>
+<span class="fc" id="L151">        System.out.print(&quot;Introduce a segunda data (yyyy-MM-dd): &quot;);</span>
+<span class="fc" id="L152">        String dataFinStr = scanner.next();</span>
     
-<span class="nc" id="L154">        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd&quot;);</span>
+<span class="fc" id="L154">        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd&quot;);</span>
     
-<span class="nc" id="L156">        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd&quot;);</span>
+<span class="fc" id="L156">        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(&quot;yyyy-MM-dd&quot;);</span>
     
         try {
-<span class="nc" id="L159">            LocalDate dataInicio = LocalDate.parse(dataInicioStr, formatter);</span>
-<span class="nc" id="L160">            LocalDate dataFin = LocalDate.parse(dataFinStr, formatter);</span>
+<span class="fc" id="L159">            LocalDate dataInicio = LocalDate.parse(dataInicioStr, formatter);</span>
+<span class="fc" id="L160">            LocalDate dataFin = LocalDate.parse(dataFinStr, formatter);</span>
     
-<span class="nc" id="L162">            boolean usuariosEncontrados = false;</span>
-<span class="nc bnc" id="L163" title="All 2 branches missed.">            for (Usuario usuario : usuarios) {</span>
-<span class="nc" id="L164">                String fechaNacimientoStr = dateFormatter.format(usuario.getNacemento().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());</span>
+<span class="fc" id="L162">            boolean usuariosEncontrados = false;</span>
+<span class="fc bfc" id="L163" title="All 2 branches covered.">            for (Usuario usuario : usuarios) {</span>
+<span class="fc" id="L164">                String fechaNacimientoStr = dateFormatter.format(usuario.getNacemento().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());</span>
     
-<span class="nc" id="L166">                LocalDate dataNacemento = LocalDate.parse(fechaNacimientoStr, formatter);</span>
-<span class="nc bnc" id="L167" title="All 4 branches missed.">                if (dataNacemento.isAfter(dataInicio) || dataNacemento.isBefore(dataFin)) {</span>
-<span class="nc" id="L168">                    System.out.println(&quot;Email: &quot; + usuario.getEmail());</span>
-<span class="nc" id="L169">                    System.out.println(&quot;Data de nacemento: &quot; + fechaNacimientoStr);</span>
-<span class="nc" id="L170">                    usuariosEncontrados = true;</span>
+<span class="fc" id="L166">                LocalDate dataNacemento = LocalDate.parse(fechaNacimientoStr, formatter);</span>
+<span class="pc bpc" id="L167" title="1 of 4 branches missed.">                if (dataNacemento.isAfter(dataInicio) || dataNacemento.isBefore(dataFin)) {</span>
+<span class="fc" id="L168">                    System.out.println(&quot;Email: &quot; + usuario.getEmail());</span>
+<span class="fc" id="L169">                    System.out.println(&quot;Data de nacemento: &quot; + fechaNacimientoStr);</span>
+<span class="fc" id="L170">                    usuariosEncontrados = true;</span>
                 }
             }
     
-<span class="nc bnc" id="L174" title="All 2 branches missed.">            if (!usuariosEncontrados) {</span>
+<span class="pc bpc" id="L174" title="1 of 2 branches missed.">            if (!usuariosEncontrados) {</span>
 <span class="nc" id="L175">                System.out.println(&quot;Non hai usuarios con data de nacemento entre &quot; + dataInicioStr + &quot; e &quot; + dataFinStr);</span>
             }
 <span class="nc" id="L177">        } catch (DateTimeParseException e) {</span>
 <span class="nc" id="L178">            System.out.println(&quot;Formato de data incorrecto. O formato debe ser yyyy-MM-dd&quot;);</span>
         }
-<span class="nc" id="L180">    }</span>
-    
+<span class="fc" id="L180">    }</span>
 }
 
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class App {
-    private List<Usuario> usuarios;
+    public List<Usuario> usuarios;
 
     public App() {
         this.usuarios = new ArrayList<>();
@@ -178,6 +178,5 @@ public class App {
             System.out.println("Formato de data incorrecto. O formato debe ser yyyy-MM-dd");
         }
     }
-    
 }
 
